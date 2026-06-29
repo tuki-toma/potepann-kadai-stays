@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get 'mypage', to: 'mypage#show'
+
+  get 'facilities',to: 'facilities#index'
 end

@@ -1,0 +1,18 @@
+<h2>宿泊施設一覧</h2>
+
+<%= @Facilities.each do |facility| %>
+    <h2><%= facility.name %></h2>
+    <% if facility.images.attached? %>
+      <% facility.images.each do |image| %>
+        <%= image_tag image,size: "300×200" %>
+      <% end %>
+    <% else %>
+      <div>< image_tag "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png", size: "300×200", alt:"デフォルト画像" %></div>
+    <% end %>
+      
+
+    <p><%= facility.introduce %></p>
+    <p>料金：<%= facility.fee %>円</p>
+    <h2><%= facility.created_at %></h2>
+<% end %>
+
