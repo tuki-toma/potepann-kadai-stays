@@ -1,8 +1,11 @@
-<h2>Sign up</h2>
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
+  <div >
+    <p><%= f.label :name ,"名前" %></p>
+    <p><%= f.text_field :name %></p>
+  </div>
   <div class="field">
     <p><%= f.label :email %></p>
     <p><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
@@ -11,7 +14,7 @@
   <div class="field">
     <p><%= f.label :password %></p>
     <% if @minimum_password_length %>
-      <p><em>(<%= @minimum_password_length %> characters minimum)</em></p>
+      <p><em>(<%= @minimum_password_length %> 文字以上必要です)</em></p>
     <% end %>
     <p><%= f.password_field :password, autocomplete: "new-password" %></p>
   </div>
@@ -22,8 +25,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%- if controller_name != 'sessions' %>
+  <%= link_to "ログインはこちら", new_session_path(resource_name) %><br />
+<% end %>
