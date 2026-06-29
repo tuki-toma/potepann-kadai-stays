@@ -1,2 +1,2 @@
-module MyaHelper
+module MypageHelper
 end
