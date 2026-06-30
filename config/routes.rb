@@ -15,5 +15,5 @@ Rails.application.routes.draw do
 
   get 'mypage', to: 'mypage#show'
 
-  get 'facilities',to: 'facilities#index'
+  resources :rooms
 end
