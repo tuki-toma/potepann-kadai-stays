@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get 'mypage', to: 'mypage#show'
-
+  resource :mypage
   resources :rooms
 end
