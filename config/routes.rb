@@ -14,6 +14,11 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resource :mypage
-  resources :rooms
+  resources :rooms do
+    collection do
+      get 'search'
+    end
+  end
+  
   resource :profile, only:[:edit,:update]
 end

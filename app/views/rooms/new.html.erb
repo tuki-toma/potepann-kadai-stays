@@ -33,8 +33,9 @@
 
     <div>
       <%= f.label :address,"住所" %>
+      <%= f.collection_select :area_id,Area.all,:id,:name %>
       <%= f.text_area :address %>
     </div>
-
+    
     <%= f.submit "登録" %>
 <% end %>
