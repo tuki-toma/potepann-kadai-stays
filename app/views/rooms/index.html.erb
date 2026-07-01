@@ -1,20 +1,20 @@
 <h2>宿泊施設一覧</h2>
 
-<%= @rooms.each do |room| %>
+<% @rooms.each do |room| %>
 
-    <h2><%= room.name %></h2>
+    <h2><%= link_to  room.name ,room_path(room) %></h2>
 
     <% if room.images.attached? %>
       <% room.images.each do |image| %>
-        <%= image_tag image,size: "300x200" %>
+        <%=image_tag image,size: "300x200" %>
       <% end %>
     <% else %>
-      <div>< image_tag "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png", size: "300x200", alt:"デフォルト画像" %></div>
+      <div><image_tag "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png", size: "300x200", alt:"デフォルト画像" %></div>
     <% end %>
       
 
-    <p><%= room.introduction %></p>
-    <p>料金：<%= room.fee %>円</p>
-    <h2><%= room.created_at %></h2>
+    <p>紹介文<%= room.introduce %></p>
+    <p>料金：<%= room.price %>円</p>
+    <h3>作成日<%= room.created_at %></h3>
 
 <% end %>
