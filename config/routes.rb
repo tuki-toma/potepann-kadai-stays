@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resource :mypage
   resources :rooms
+  resource :profile, only:[:edit,:update]
 end

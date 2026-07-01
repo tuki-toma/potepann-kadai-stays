@@ -16,8 +16,14 @@
     </div>
 
     <div>
-      <%= f.label :introduce,"詳細" %>
-      <%= f.text_area :introduce %>
+      <%= f.label :images, "施設写真" %>
+      <%= f.file_field :images %>
+    </div>
+
+
+    <div>
+      <%= f.label :introduction,"詳細" %>
+      <%= f.text_area :introduction %>
     </div>
 
     <div>
