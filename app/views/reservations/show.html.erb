@@ -1,0 +1,12 @@
+<h2>予約確認</h2>
+
+<dl>
+  <dt>チェックイン日</dt> <dd><%= @reservation.check_in_date %></dd>
+  <dt>チェックアウト日</dt> <dd><%= @reservation.check_out_date %></dd>
+  <dt>宿泊日数</dt> <dd><%= @reservation.stay_days %></dd>
+  <dt>人数</dt> <dd><%= @reservation.people %></dd>
+  <dt>合計料金</dt> <dd><%= @reservation.reservation_price %></dd>
+</dl>
+
+
+<%= link_to "予約一覧へ", reservations_path %>

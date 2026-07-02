@@ -1,0 +1,19 @@
+<h2>予約一覧</h2>
+
+<% @reservations.each do |r| %>
+    <dl>
+      <dt>施設名</dt> <dd><%= r.room.name %></dd>
+      <dt>紹介文</dt> <dd><%= r.room.introduce %></dd>
+      <dt>合計料金</dt> <dd><%= r.reservation_price %></dd>
+      <dt>チェックイン日</dt> <dd><%= r.check_in_date %></dd>
+      <dt>チェックアウト日</dt> <dd><%= r.check_out_date %></dd>
+      <dt>予約確定日時</dt> <dd><%= r.created_at %></dd>
+    </dl>
+
+    <% if r.room.images.attached? %>
+      <%= image_tag r.room.images.first, size:"300x200" %>
+    <% else %>
+      <%= image_tag "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png", size:"300x200", alt:"デフォルト画像" %>
+    <% end %>
+
+<% end %>

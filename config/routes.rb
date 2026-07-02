@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   end
   
   resource :profile, only:[:edit,:update]
+
+  resources :reservations
 end

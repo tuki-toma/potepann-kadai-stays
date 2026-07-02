@@ -1,0 +1,35 @@
+<h2>予約登録</h2>
+
+<p>施設名:<%= @room.name %></p>
+<p>料金:<%= @room.price %></p>
+
+<%= form_with model: @reservation do |f| %>
+    <%# エラーメッセージ表示 %>
+    <% if @reservation.errors.any? %>
+      <ul>
+        <% @reservation.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div>
+      <%= f.label :check_in_date, "チェックイン日" %>
+      <%= f.date_field :check_in_date %>
+    </div>
+
+    <div>
+      <%= f.label :check_out_date, "チェックアウト日" %>
+      <%= f.date_field :check_out_date %>
+    </div>
+
+    <div>
+      <%= f.label :people, "人数" %>
+      <%= f.number_field :people %>
+    </div>
+
+    <%= f.submit "予約" %>
+<% end %>
+
+<div><%= link_to "戻る",request.referer || rooms_path %></div>
+
