@@ -6,12 +6,17 @@ class ReservationsController < ApplicationController
     end
 
     def new
+        puts params.inspect
+        puts params[:room_id]
+
         @room = Room.find(params[:room_id])
         @reservation = Reservation.new
     end
 
     def create
+        @room = Room.find(params[:room_id])
         @reservation = current_user.reservations.new(reservation_params)
+        @reservation.room = @room
 
         if @reservation.save
             redirect_to @reservation, notice:"予約を登録しました"
@@ -27,6 +32,6 @@ class ReservationsController < ApplicationController
     private
 
     def reservation_params
-        params.require(:reservation).permit(:check_in_date,:check_out_date,:people,:room_id)
+        params.require(:reservation).permit(:check_in_date,:check_out_date,:people)
     end
 end

@@ -1,9 +1,9 @@
 class RoomsController < ApplicationController
-    before_action :authenticate_user!
-    before_action :set_q,only:[:index,:search]
+    before_action :authenticate_user! , except:[:search,:show]
+    before_action :set_q,only:[:search]
 
     def index
-        @rooms = Room.all
+        @rooms = current_user.rooms
     end
 
     def new 
@@ -25,7 +25,11 @@ class RoomsController < ApplicationController
     end
 
     def search
-        @rooms = @q.result
+        if params[:q].present?
+            @rooms = @q.result
+        else
+            @rooms = []
+        end
     end
 
     private

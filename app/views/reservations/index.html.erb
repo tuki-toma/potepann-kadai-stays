@@ -7,7 +7,7 @@
       <dt>合計料金</dt> <dd><%= r.reservation_price %></dd>
       <dt>チェックイン日</dt> <dd><%= r.check_in_date %></dd>
       <dt>チェックアウト日</dt> <dd><%= r.check_out_date %></dd>
-      <dt>予約確定日時</dt> <dd><%= r.created_at %></dd>
+      <dt>予約確定日時</dt> <dd><%=l r.created_at %></dd>
     </dl>
 
     <% if r.room.images.attached? %>

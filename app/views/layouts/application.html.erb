@@ -19,9 +19,24 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= current_user.name %>
+      <div class="menu" >
+        <%= current_user.name %>
+        <% if current_user.image.attached? %>
+          <%= image_tag current_user.image.variant(resize_to_fill:[40,40]),class:"user_icon"  %>
+        <% else %>
+          <%= image_tag  "https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" ,class:"user_icon" %>
+        <% end %>
+        <div class="drop" >
+          <%= link_to "アカウント" , mypage_path %>
+          <%= link_to "プロフィール編集" , mypage_path %>
+        </div>
+      </div>
 
-
+      <ul>
+        <li><%= link_to "自分の登録施設一覧", rooms_path %></li>
+        <li><%= link_to "予約施設一覧",reservations_path %></li>
+      </ul>
+    
       <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete} %>
     <% else %>
       <%= link_to "ログイン", new_user_session_path %>

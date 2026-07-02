@@ -3,3 +3,9 @@ ja:
     new:
       title: 'ユーザー登録'
       to_login_page: 'ログインページへ'
+  date:
+    formats:
+      default: "%Y/%m/%d"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"

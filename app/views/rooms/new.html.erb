@@ -39,3 +39,5 @@
     
     <%= f.submit "登録" %>
 <% end %>
+
+<%= link_to "戻る",request.referer || rooms_path %>

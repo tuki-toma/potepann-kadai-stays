@@ -1,9 +1,9 @@
 <h2>予約登録</h2>
 
-<p>施設名:<%= @room.name %></p>
-<p>料金:<%= @room.price %></p>
+<p>施設名: <%= @room.name %></p>
+<p>料金: <%= @room.price %></p>
 
-<%= form_with model: @reservation do |f| %>
+<%= form_with model: @reservation,url:reservations_path(room_id: @room.id) do |f| %>
     <%# エラーメッセージ表示 %>
     <% if @reservation.errors.any? %>
       <ul>
@@ -32,4 +32,3 @@
 <% end %>
 
 <div><%= link_to "戻る",request.referer || rooms_path %></div>
-

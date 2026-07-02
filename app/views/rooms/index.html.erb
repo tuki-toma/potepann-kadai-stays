@@ -13,9 +13,10 @@
 
     <p>紹介文<%= room.introduce %></p>
     <p>料金：<%= room.price %>円</p>
-    <h3>作成日<%= room.created_at %></h3>
+    <h3>作成日<%= l room.created_at %></h3>
 
 <% end %>
+<%= link_to "施設登録へ",new_room_path %>
 
 <%= link_to "検索へ", search_rooms_path %>
 <%= link_to "戻る",request.referer || rooms_path %>
