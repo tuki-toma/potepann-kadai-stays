@@ -19,14 +19,17 @@
 
   <body>
     <% if user_signed_in? %>
-      <div class="menu">ログイン中: </div>
-      <div class="drop" >
+      
+      
+      <div class="menu">
         <%= current_user.name %>
         <% if current_user.image.attached? %>
           <%= image_tag current_user.image.variant(resize_to_fill:[40,40]),class:"user_icon"  %>
         <% else %>
           <%= image_tag  "https://rails-02-sample.herokuapp.com/assets/common/default-avatar-7a6cbfd7993e89f24bfc888f4a035a83c6f1428b8bdc47eed9095f2799a40153.png" ,class:"user_icon" %>
         <% end %>
+      </div>
+      <div class="drop" >
         <ul>
           <li><%= link_to "アカウント" , mypage_path %></li>
           <li><%= link_to "プロフィール編集" , mypage_path %></li>
