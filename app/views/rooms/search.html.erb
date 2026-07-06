@@ -1,0 +1,42 @@
+<h2>施設検索</h2>
+
+<%= search_form_for @q, url: search_rooms_path do |f| %>
+  <h3>施設名、詳細検索</h3>
+    <%= f.search_field :name_or_introduce_cont %>
+    
+    
+  <h3>エリア検索</h3>
+    <%= f.collection_select :area_id_eq,Area.all, :id,:name ,include_blank: "全て" %>
+    
+    
+  <h3>住所検索</h3>
+    <%= f.search_field :address_cont %>
+  
+  <%= f.submit '検索へ' %>
+
+<% end %>
+
+<% @rooms.each do |room| %>
+
+    <h2><%= link_to  room.name ,room_path(room) %></h2>
+
+    <% if room.images.attached? %>
+      <% room.images.each do |image| %>
+        <%=image_tag image,size: "300x200" %>
+      <% end %>
+    <% else %>
+      <div><image_tag "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png", size: "300x200", alt:"デフォルト画像" %></div>
+    <% end %>
+      
+
+    <p>紹介文<%= room.introduce %></p>
+    <p>料金：<%= room.price %>円</p>
+    <h3>作成日<%= room.created_at %></h3>
+
+<% end %>
+
+<div>検索結果合計<%= @rooms.size %>件</div>
+<% @rooms.each do |room| %>
+  <h3><%= room.name %></h3>
+  <%= link_to "詳細", room_path(room) %>
+<% end %>

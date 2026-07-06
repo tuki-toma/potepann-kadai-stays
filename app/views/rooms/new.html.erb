@@ -1,0 +1,43 @@
+<h2>宿泊施設新規登録</h2>
+
+<%= form_with model: @room,multipart: true do |f| %>
+    <%# エラーメッセージ表示 %>
+    <% if @room.errors.any? %>
+      <ul>
+        <% @room.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    
+    <div>
+      <%= f.label :name,"施設名" %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :images, "施設写真" %>
+      <%= f.file_field :images,multiple: true %>
+    </div>
+
+
+    <div>
+      <%= f.label :introduce,"詳細" %>
+      <%= f.text_area :introduce %>
+    </div>
+
+    <div>
+      <%= f.label :price,"料金" %>
+      <%= f.number_field :price %>
+    </div>
+
+    <div>
+      <%= f.label :address,"住所" %>
+      <%= f.collection_select :area_id,Area.all,:id,:name %>
+      <%= f.text_area :address %>
+    </div>
+    
+    <%= f.submit "登録" %>
+<% end %>
+
+<%= link_to "戻る",request.referer || rooms_path %>

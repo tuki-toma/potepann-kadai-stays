@@ -1,0 +1,19 @@
+<h2> 登録施設詳細 </h2>
+
+<dl>
+  <dt>名前</dt> <dd><%= @room.name %></dd>
+  <dt>紹介文</dt> <dd><%= @room.introduce %></dd>
+  <dt>宿泊料金</dt> <dd><%= @room.price %>円</dd>
+</dl>
+
+<% if @room.images.attached? %>
+  <% @room.images.each do |image| %>
+    <%= image_tag image,size:"300x200" %>
+  <% end %>
+<% else %>
+  <%= image_tag "https://rails-02-sample.herokuapp.com/assets/room/default-image-4e0ac6b8d01335b5b22fe6586af13644ae51dddb6aeabf35b9174e80f13cd09d.png",size:"300x200" %>
+<% end %>
+
+<div><%= link_to "戻る",request.referer || rooms_path %></div>
+
+<div><%= link_to "予約へ", new_reservation_path(room_id: @room.id) %></div>
