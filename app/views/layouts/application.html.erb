@@ -18,9 +18,8 @@
   </head>
 
   <body>
+    <header>
     <% if user_signed_in? %>
-      
-      
       <div class="menu">
         <%= current_user.name %>
         <% if current_user.image.attached? %>
@@ -43,7 +42,9 @@
       <%= link_to "ログイン", new_user_session_path %>
       <%= link_to "新規登録", new_user_registration_path %>
     <% end %>
-    
-    <%= yield %>
+    </header>
+    <div class=vew >
+      <%= yield %>
+    </div>
   </body>
 </html>

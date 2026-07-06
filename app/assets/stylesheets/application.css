@@ -12,3 +12,12 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+body{
+  margin-left:  5%;
+  margin-top: 5%;
+}
+
+.vew{
+  margin-left: 10%;
+}
